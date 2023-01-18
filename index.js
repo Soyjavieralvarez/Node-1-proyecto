@@ -9,6 +9,10 @@ const teachersRoutes = require('./src/api/teachers/teacher.routes');
 const PORT = 3000;
 const server = express ();
 
+//Transformar el contenido o cuerpo de las peticiones POST (req.body)
+//Convierte cuando enviamos un post con json al servidor
+server.use(express.json()); 
+
 //Configuración de todas las rutas de nuestro servidor. 
 
 server.use("/", indexRoutes);
