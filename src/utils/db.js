@@ -8,7 +8,7 @@ const connectDB = async () => {
         const db = await mongoose.connect(DB_URL);
         const { name, host, port } = db.connection;
         console.log(db.connection);
-        console.log('[Server Error] Conectado con éxito a: &{name} en host ${host} en puerto ${port}');
+        console.log('[Conectado con éxito] a: &{name} en host ${host} en puerto ${port}');
     }
     catch(error) {
         console.log('[Server Error] Conectando a la base de datos', error);
