@@ -7,11 +7,11 @@ const db = require("./src/utils/db"); //Importar db
 db.connectDB(); //Utilizo la función que me conecta con la base de datos de nuestro archivo db
 
 //All Routes imports
+const usersRoutes = require('./src/api/users/user.routes');
 const indexRoutes = require("./src/api/index/index.routes");
 const teachersRoutes = require("./src/api/teachers/teacher.routes");
-const usersRoutes = require('./src/api/users/user.routes');
-const User = require("./src/api/users/user.model");
-const Teacher = require("./src/api/teachers/teacher.model");
+// const User = require("./src/api/users/user.model");
+// const Teacher = require("./src/api/teachers/teacher.model");
 
 //Declaramos el puerto en el que se levantará nuestro servidor
 const PORT = 3000;
@@ -24,19 +24,19 @@ server.use(cors());
 
 //Transformar el contenido o cuerpo de las peticiones POST (req.body)
 //Convierte cuando enviamos un post con json al servidor
-server.use(express.json(Teacher)); 
-server.use(express.json(User)); //!PARA ENLAZAR CON USER.MODEL.JS
+server.use(express.json()); 
+server.use(express.urlencoded({ extended: true}));
+
+// server.use(express.json(User)); //!PARA ENLAZAR CON USER.MODEL.JS
 
 //Convierte cuando mandamos un form o formdata al servidor
 
 server.use(express.urlencoded({ extended: true}));
 
 //Configuración de todas las rutas de nuestro servidor. 
+server.use("/users", usersRoutes);
 server.use('/teachers', teachersRoutes);
 server.use("/", indexRoutes);
-
-// USUARIOS/ESTUDIANTES
-server.use("/users", usersRoutes);
 
 server.listen(PORT, () => {
     console.log('Servidor ejecutando a máximo rendimiento en http://localhost:' + PORT);

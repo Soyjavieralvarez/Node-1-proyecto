@@ -2,27 +2,18 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
     {
-        name: {
+        email: {
             type: String,
-            required: [true, 'Debes poner el nombre del estudiante'],
-        },
-
-        speciality: {
-            type:[String],
-            enum: ['Front-end', 'Back-end', 'Full-Stack'],
-        },
-
-        contactEmail: {
-            type: String,
-            required:true,
+            required:[true, 'Debes introducir un email'],
             unique:true,
         },
 
-        age: {
+        password: {
             type: String,
+            required: [true, 'Debes introducir una contraseña']
         },
 
-        city: {
+        name: {
             type:String,
             required:true,
         },
