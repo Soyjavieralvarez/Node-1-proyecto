@@ -1,20 +1,24 @@
 const express = require('express');
 const controller = require('./teacher.controller')
+
 const router = express.Router();
 
 // ruta: /teachers/
-router.get('/', controller.indexGet);
+router.get("/", controller.indexGet);
 
-//ruta: teachers
-router.get('/:id', controller.getById);
+//ruta: /teachers/935478645876edfhgudfhg
+router.get("/:id", controller.getById);
+
+//ruta: /teachers/name
+router.get("/getbyname/:name", controller.getByName)
+
 // ruta : /teachers/create
-router.post('/create', controller.createPost);
+router.post("/create", controller.createPost);
 
 //ruta: /teachers/id/{id}
-router.put('/edit/:id', controller.editPut)
+router.put("/edit/:id", controller.editPut)
 
 //ruta : /teacher/delete
-
 router.delete('/delete/:id', controller.deleteTeacher)
 
 module.exports = router;

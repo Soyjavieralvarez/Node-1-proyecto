@@ -16,11 +16,11 @@ const teacherSchema = new mongoose.Schema(
         contactEmail: {
             type: String,
             required: [true],
-            unique: true,
+            // unique: true,
         },
 
         schedule: {
-            type: Date, // Unix format 
+            type: String, // Unix format 
         },
 
         startingDate: {
@@ -35,5 +35,5 @@ const teacherSchema = new mongoose.Schema(
 
 const Teacher = mongoose.model("teachers", teacherSchema);
 
-module.exporst = Teacher;
+module.exports = Teacher;
 
