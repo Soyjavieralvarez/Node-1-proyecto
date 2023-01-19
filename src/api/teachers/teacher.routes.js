@@ -9,9 +9,6 @@ router.get("/", controller.indexGet);
 //ruta: /teachers/935478645876edfhgudfhg
 router.get("/:id", controller.getById);
 
-//ruta: /teachers/name
-router.get("/getbyname/:name", controller.getByName)
-
 // ruta : /teachers/create
 router.post("/create", controller.createPost);
 

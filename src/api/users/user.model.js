@@ -25,6 +25,3 @@ const userSchema = new mongoose.Schema(
     const User = mongoose.model("users", userSchema);
 
     module.exports = User;
-
-    //!--¿PUEDE SER QUE ME FALTE ENLAZAR CON SERVER.USE(EXPRESS.JSON());
-    //!EN INDEX.JS EN LA LÍNEA 25. ¡EN EFECTO!

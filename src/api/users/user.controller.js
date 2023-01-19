@@ -1,3 +1,5 @@
+const User = require('./User.model');
+
 const registerPost = (req, res, next) => {
     try {
         return res.status(200).json('Register funcionando de nuevo');

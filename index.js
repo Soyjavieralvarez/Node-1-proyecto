@@ -1,15 +1,14 @@
 const express = require("express"); //Express para levantar el servidor
-
 const cors = require("cors"); //Las cors sirven para permitir o denegar que se pueda acceder al servidor desde x sitios
-
 const db = require("./src/utils/db"); //Importar db
 
 db.connectDB(); //Utilizo la función que me conecta con la base de datos de nuestro archivo db
 
 //All Routes imports
-const usersRoutes = require('./src/api/users/user.routes');
 const indexRoutes = require("./src/api/index/index.routes");
+const usersRoutes = require('./src/api/users/user.routes');
 const teachersRoutes = require("./src/api/teachers/teacher.routes");
+const courseBlocksRoutes = require('./src/api/courseBlocks/courseBlock.routes');
 // const User = require("./src/api/users/user.model");
 // const Teacher = require("./src/api/teachers/teacher.model");
 
@@ -25,7 +24,7 @@ server.use(cors());
 //Transformar el contenido o cuerpo de las peticiones POST (req.body)
 //Convierte cuando enviamos un post con json al servidor
 server.use(express.json()); 
-server.use(express.urlencoded({ extended: true}));
+
 
 // server.use(express.json(User)); //!PARA ENLAZAR CON USER.MODEL.JS
 
@@ -36,6 +35,8 @@ server.use(express.urlencoded({ extended: true}));
 //Configuración de todas las rutas de nuestro servidor. 
 server.use("/users", usersRoutes);
 server.use('/teachers', teachersRoutes);
+//!Las rutas siempre con guión medio a diferencia del modelo
+server.use('/course-blocks', courseBlocksRoutes);
 server.use("/", indexRoutes);
 
 server.listen(PORT, () => {
